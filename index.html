@@ -7,6 +7,14 @@ textarea {
      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
      box-sizing: border-box;         /* Opera/IE 8+ */
+	font-family:"Trebuchet MS";
+}
+
+hr{
+	border-width:5;
+    border-color: #7FF;
+	background-color: #7FF;
+	color: #7FF;
 }
 </style>
 </head>
@@ -15,8 +23,12 @@ textarea {
 
 </textarea>
 <button id="btn">Run</button>
+<button id="inc">Increase font size</button>
+<button id="dec">Decrease font size</button>
+<hr>
 <iframe id="frame" width="100%" height="100%">Your browser is garbage, pure total garbage</iframe>
 <script>
+var size = 11
 var frame = document.getElementById('frame')
 var html_string= "<canvas style='border:2px solid black'></canvas>";
 frame.frameBorder = false
@@ -24,6 +36,17 @@ frame.src = "data:text/html;charset=utf-8," + escape(html_string);
 document.getElementById("btn").onclick = function(){
 	frame.src = "data:text/html;charset=utf-8,"+document.getElementById("txt").value
 }
+
+document.getElementById("inc").onclick = function(){
+	size++
+	document.getElementById("txt").style.fontSize = size.toString()
+}
+
+document.getElementById("dec").onclick = function(){
+	size--
+	document.getElementById("txt").style.fontSize = size.toString()
+}
+
 document.getElementById("txt").innerHTML = `<html>
 <body>
 <h1>Hello World</h1>
